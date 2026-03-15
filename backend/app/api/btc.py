@@ -84,10 +84,14 @@ async def track_btc_address(address: str, account_name: str = "On-chain BTC"):
 
         if existing:
             account_id = existing["id"]
+            conn.execute(
+                "UPDATE accounts SET btc_address = ? WHERE id = ?",
+                (address, account_id),
+            )
         else:
             cursor = conn.execute(
-                "INSERT INTO accounts (name, type, institution) VALUES (?, 'crypto', 'onchain')",
-                (account_name,),
+                "INSERT INTO accounts (name, type, institution, btc_address) VALUES (?, 'crypto', 'onchain', ?)",
+                (account_name, address),
             )
             account_id = cursor.lastrowid
 

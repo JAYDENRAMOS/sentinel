@@ -1,0 +1,106 @@
+.crypto-connect {
+  padding: 0;
+}
+
+.crypto-connect h4 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.crypto-section {
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.crypto-section:last-of-type {
+  border-bottom: none;
+}
+
+.crypto-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.crypto-label {
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.crypto-unconfigured {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.btn-crypto {
+  background: var(--amber, #f59e0b);
+  color: #000;
+  border: none;
+  border-radius: 6px;
+  padding: 0.4rem 1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.btn-crypto:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.btn-crypto:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btc-track-form {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.input-crypto {
+  flex: 1;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.4rem 0.75rem;
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+}
+
+.input-crypto::placeholder {
+  color: var(--text-muted);
+}
+
+.input-label {
+  max-width: 140px;
+}
+
+.crypto-hint {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.crypto-hint code {
+  background: var(--bg-secondary);
+  padding: 0.1rem 0.3rem;
+  border-radius: 3px;
+  font-size: 0.7rem;
+}
+
+.crypto-message {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--amber, #f59e0b);
+  padding: 0.5rem;
+  background: var(--bg-secondary);
+  border-radius: 4px;
+}

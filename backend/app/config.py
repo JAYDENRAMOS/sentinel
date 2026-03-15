@@ -15,6 +15,10 @@ class Settings(BaseSettings):
     plaid_secret: str = ""
     plaid_env: str = "sandbox"  # sandbox, development, production
 
+    # Coinbase
+    coinbase_api_key: str = ""
+    coinbase_api_secret: str = ""
+
     model_config = {"env_prefix": "SENTINEL_"}
 
 

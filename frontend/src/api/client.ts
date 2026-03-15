@@ -90,6 +90,10 @@ export const api = {
     return request<import('./types').QuarterlyEstimate[]>(`/api/tax/quarterly-estimates?${search}`)
   },
 
+  // Coinbase
+  getCoinbaseStatus: () => request<{ configured: boolean }>('/api/coinbase/status'),
+  syncCoinbase: () => request<{ accounts_synced: number; holdings_synced: number; transactions_synced: number }>('/api/coinbase/sync', { method: 'POST' }),
+
   // Import
   importCSV: async (accountId: number, file: File): Promise<import('./types').ImportResult> => {
     const formData = new FormData()

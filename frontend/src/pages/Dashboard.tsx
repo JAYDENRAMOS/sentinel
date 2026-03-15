@@ -3,6 +3,7 @@ import { api } from '../api/client'
 import type { NetWorth, BTCPrice, HealthStatus } from '../api/types'
 import { formatUSD, formatPct, gainLossClass } from '../components/FormatUtils'
 import { PlaidManager } from '../components/PlaidLink'
+import { CryptoConnect } from '../components/CryptoConnect'
 import './Dashboard.css'
 
 export function Dashboard() {
@@ -207,6 +208,11 @@ export function Dashboard() {
         {/* Plaid Account Linking */}
         <div className="card onboarding-card">
           <PlaidManager onSync={fetchData} />
+        </div>
+
+        {/* Crypto Connections */}
+        <div className="card onboarding-card">
+          <CryptoConnect onSync={fetchData} />
         </div>
       </div>
     </div>

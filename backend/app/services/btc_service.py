@@ -84,24 +84,29 @@ async def get_address_info(address: str) -> AddressInfo:
     Falls back to Blockstream.info if Mempool is unavailable.
     """
     async with httpx.AsyncClient(timeout=15.0) as client:
-        # Try Mempool first
+        # Try Mempool first, fallback to Blockstream
         try:
             addr_resp = await client.get(f"{MEMPOOL_ADDRESS_URL}/{address}")
             addr_resp.raise_for_status()
             addr_data = addr_resp.json()
-
-            utxo_resp = await client.get(f"{MEMPOOL_ADDRESS_URL}/{address}/utxo")
-            utxo_resp.raise_for_status()
-            utxo_data = utxo_resp.json()
         except (httpx.HTTPError, httpx.TimeoutException):
-            # Fallback to Blockstream
             addr_resp = await client.get(f"{BLOCKSTREAM_ADDRESS_URL}/{address}")
             addr_resp.raise_for_status()
             addr_data = addr_resp.json()
 
-            utxo_resp = await client.get(f"{BLOCKSTREAM_ADDRESS_URL}/{address}/utxo")
-            utxo_resp.raise_for_status()
-            utxo_data = utxo_resp.json()
+        # UTXOs are optional — some addresses return 400
+        utxo_data = []
+        try:
+            utxo_resp = await client.get(f"{MEMPOOL_ADDRESS_URL}/{address}/utxo")
+            if utxo_resp.status_code == 200:
+                utxo_data = utxo_resp.json()
+        except (httpx.HTTPError, httpx.TimeoutException):
+            try:
+                utxo_resp = await client.get(f"{BLOCKSTREAM_ADDRESS_URL}/{address}/utxo")
+                if utxo_resp.status_code == 200:
+                    utxo_data = utxo_resp.json()
+            except (httpx.HTTPError, httpx.TimeoutException):
+                pass
 
     chain_stats = addr_data.get("chain_stats", {})
     mempool_stats = addr_data.get("mempool_stats", {})

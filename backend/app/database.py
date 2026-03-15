@@ -29,9 +29,26 @@ def get_db():
 
 
 def init_db():
-    """Initialize the database with the schema."""
+    """Initialize the database with the schema and run migrations."""
     with get_db() as conn:
         conn.executescript(SCHEMA)
+        _run_migrations(conn)
+
+
+def _run_migrations(conn):
+    """Add columns that may be missing from older databases."""
+    migrations = [
+        ("accounts", "plaid_account_id", "TEXT"),
+        ("accounts", "plaid_item_id", "TEXT"),
+        ("accounts", "coinbase_account_id", "TEXT"),
+        ("accounts", "btc_address", "TEXT"),
+        ("transactions", "plaid_transaction_id", "TEXT"),
+        ("transactions", "coinbase_tx_id", "TEXT"),
+    ]
+    for table, column, col_type in migrations:
+        existing = [r[1] for r in conn.execute(f"PRAGMA table_info({table})").fetchall()]
+        if column not in existing:
+            conn.execute(f"ALTER TABLE {table} ADD COLUMN {column} {col_type}")
 
 
 SCHEMA = """
@@ -43,6 +60,8 @@ CREATE TABLE IF NOT EXISTS accounts (
     last_import_date TEXT,
     plaid_account_id TEXT,
     plaid_item_id TEXT,
+    coinbase_account_id TEXT,
+    btc_address TEXT,
     created_at TEXT DEFAULT (datetime('now')),
     updated_at TEXT DEFAULT (datetime('now'))
 );
@@ -94,6 +113,7 @@ CREATE TABLE IF NOT EXISTS transactions (
     tax_relevant INTEGER NOT NULL DEFAULT 0,
     source TEXT NOT NULL DEFAULT 'manual' CHECK(source IN ('csv_import', 'email_parsed', 'manual', 'auto_fetch', 'plaid')),
     plaid_transaction_id TEXT,
+    coinbase_tx_id TEXT,
     created_at TEXT DEFAULT (datetime('now'))
 );
 
