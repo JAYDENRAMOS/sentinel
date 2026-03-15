@@ -92,7 +92,18 @@ Each provider has its own privacy policy governing how they handle data on their
 
 ---
 
-## 6. Data Retention
+## 6. Consumer Consent
+
+Sentinel obtains explicit consent from consumers for the collection, processing, and storage of their data through the following mechanisms:
+
+- **Plaid Link Consent Flow:** Users must explicitly initiate each bank or brokerage connection through the Plaid Link interface, which presents Plaid's own data sharing disclosures and requires the user to authenticate and authorize access before any data is collected.
+- **Coinbase API Keys:** Users must manually create and provide their own Coinbase API credentials, constituting an explicit opt-in to data collection from Coinbase.
+- **On-chain Bitcoin:** Users must manually enter each Bitcoin address they wish to track. No addresses are discovered or monitored without explicit user action.
+- **Gmail OAuth Consent:** Gmail integration requires the user to complete a full Google OAuth2 consent flow, including review and approval of the requested read-only scope, before any email data is accessed.
+- No data is collected automatically or without user-initiated action. Each integration is independently optional.
+- Users may revoke consent at any time by disconnecting accounts, deleting API keys, revoking OAuth permissions, or deleting the local database.
+
+## 7. Data Retention
 
 - Your data is retained for as long as you use Sentinel
 - You can delete all data at any time by deleting the `sentinel.db` database file
@@ -101,7 +112,7 @@ Each provider has its own privacy policy governing how they handle data on their
 
 ---
 
-## 7. Your Rights
+## 8. Your Rights
 
 Because Sentinel is self-hosted, you have complete control:
 
@@ -116,7 +127,7 @@ Because Sentinel is self-hosted, you have complete control:
 
 ---
 
-## 8. Security
+## 9. Security
 
 - All API communication uses TLS 1.2 or higher (HTTPS)
 - API credentials are stored as environment variables, never in source code
@@ -126,7 +137,7 @@ Because Sentinel is self-hosted, you have complete control:
 
 ---
 
-## 9. Third-Party Services
+## 10. Third-Party Services
 
 Sentinel itself does not operate any servers or services. The third-party APIs accessed are governed by their own privacy policies:
 
@@ -138,19 +149,19 @@ Sentinel itself does not operate any servers or services. The third-party APIs a
 
 ---
 
-## 10. Children's Privacy
+## 11. Children's Privacy
 
 Sentinel is not intended for use by individuals under the age of 18. We do not knowingly collect financial data from minors.
 
 ---
 
-## 11. Changes to This Policy
+## 12. Changes to This Policy
 
 Updates to this policy will be reflected in this document with an updated "Last Updated" date. As an open-source project, all changes are visible in the public Git history.
 
 ---
 
-## 12. Contact
+## 13. Contact
 
 For privacy questions or concerns:
 
