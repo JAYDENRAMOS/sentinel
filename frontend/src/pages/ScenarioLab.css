@@ -1,0 +1,157 @@
+.scenario-lab {
+  max-width: 1200px;
+}
+
+.simulator-panel {
+  max-width: 900px;
+}
+
+.input-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.input-group label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* Comparison cards (sale simulator) */
+.comparison-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.comparison-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.25rem;
+}
+
+.comparison-card.best {
+  border-color: var(--green);
+  box-shadow: 0 0 0 1px var(--green-dim);
+}
+
+.comparison-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.comparison-header h4 {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.comparison-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.highlight-row {
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--border);
+  margin-top: 0.25rem;
+}
+
+/* Result cards (expense cutter) */
+.result-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.result-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.result-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+
+.result-value {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.result-note {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.btc-card {
+  border-color: var(--amber-dim);
+}
+
+.amber { color: var(--amber); }
+
+/* Tax year model */
+.tax-model-results {
+  margin-top: 1.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.5rem;
+  max-width: 500px;
+}
+
+.model-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.375rem 0;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.muted-row {
+  color: var(--text-muted);
+}
+
+.total-row {
+  font-size: 1rem;
+  padding-top: 0.5rem;
+}
+
+.model-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 0.5rem 0;
+}
+
+.model-insight {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background: rgba(34, 197, 94, 0.08);
+  border: 1px solid var(--green-dim);
+  border-radius: 6px;
+  font-size: 0.8125rem;
+  color: var(--green);
+}

@@ -9,6 +9,9 @@ from app.api.imports import router as imports_router
 from app.api.btc import router as btc_router
 from app.api.portfolio import router as portfolio_router
 from app.api.tax import router as tax_router
+from app.api.email import router as email_router
+from app.api.scenarios import router as scenarios_router
+from app.api.alerts import router as alerts_router
 
 app = FastAPI(
     title=settings.app_name,
@@ -30,6 +33,9 @@ app.include_router(imports_router, prefix="/api")
 app.include_router(btc_router, prefix="/api")
 app.include_router(portfolio_router, prefix="/api")
 app.include_router(tax_router, prefix="/api")
+app.include_router(email_router, prefix="/api")
+app.include_router(scenarios_router, prefix="/api")
+app.include_router(alerts_router, prefix="/api")
 
 
 @app.on_event("startup")
